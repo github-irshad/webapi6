@@ -3,12 +3,12 @@ using webapi6.Entity;
 namespace webapi6.ItemMember{
     public interface IItemRepository
     {
-        record1 GetRecord(Guid id);
-        IEnumerable<record1>GetRecord1s();
+        Item GetItem(Guid id);
+        IEnumerable<Item>GetItems();
 
-        void CreateItem(record1 item);
+        void CreateItem(Item item);
 
-        void UpdateItem(record1 item);
+        void UpdateItem(Item item);
 
         void DeleteItem(Guid id);
     }

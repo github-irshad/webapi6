@@ -5,26 +5,26 @@ namespace webapi6.ItemMember{
 
     public class ItemRepository : IItemRepository
     {
-        private readonly List<record1> items = new(){
-            new record1 {id=Guid.NewGuid(),Name="Ghost",Price=9,CurrentDate=DateTimeOffset.UtcNow},
-            new record1 {id=Guid.NewGuid(),Name="Belly",Price=89,CurrentDate=DateTimeOffset.UtcNow},
-            new record1 {id=Guid.NewGuid(),Name="Nice",Price=20,CurrentDate=DateTimeOffset.UtcNow}
+        private readonly List<Item> items = new(){
+            new Item {id=Guid.NewGuid(),Name="Ghost",Price=9,CurrentDate=DateTimeOffset.UtcNow},
+            new Item {id=Guid.NewGuid(),Name="Belly",Price=89,CurrentDate=DateTimeOffset.UtcNow},
+            new Item {id=Guid.NewGuid(),Name="Nice",Price=20,CurrentDate=DateTimeOffset.UtcNow}
         };
 
-        public IEnumerable<record1> GetRecord1s()
+        public IEnumerable<Item> GetItems()
         {
             return items;
         }
-        public record1 GetRecord(Guid id)
+        public Item GetItem(Guid id)
         {
             return items.Where(items => items.id == id).SingleOrDefault();
         }
 
-        public void CreateItem(record1 item){
+        public void CreateItem(Item item){
             items.Add(item);
         }
         
-        public void UpdateItem(record1 item){
+        public void UpdateItem(Item item){
             var index = items.FindIndex(existingItem=>existingItem.id==item.id);
             items[index]=item;
         }

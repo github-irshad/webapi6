@@ -3,8 +3,8 @@ using webapi6.Entity;
 
 namespace webapi6.extensions{
     public static class Extensions{
-        public static record1Dto AsDto(this record1 item){
-            return new record1Dto{
+        public static ItemDto AsDto(this Item item){
+            return new ItemDto{
                 id = item.id,
                 Name = item.Name,
                 Price = item.Price,
