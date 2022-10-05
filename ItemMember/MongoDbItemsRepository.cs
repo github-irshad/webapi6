@@ -1,3 +1,4 @@
+using MongoDB.Bson;
 using MongoDB.Driver;
 using webapi6.Entity;
 
@@ -13,6 +14,8 @@ namespace webapi6.ItemMember{
       itemsCollection = database.GetCollection<Item>(collectionName);
     }
 
+    private readonly FilterDefinitionBuilder<Item>filterBuilder = Builders<Item>.Filter;
+
     public void CreateItem(Item item)
     {
       itemsCollection.InsertOne(item);
@@ -25,17 +28,19 @@ namespace webapi6.ItemMember{
 
     public Item GetItem(Guid id)
     {
-      throw new NotImplementedException();
+      var filter = filterBuilder.Eq(item =>item.id,id );
+      return itemsCollection.Find(filter).SingleOrDefault();
     }
 
     public IEnumerable<Item> GetItems()
     {
-      throw new NotImplementedException();
+      return itemsCollection.Find(new BsonDocument()).ToList();
     }
 
     public void UpdateItem(Item item)
     {
-      throw new NotImplementedException();
+      var filter = filterBuilder.Eq(existingItem => existingItem.id , item.id);
+      itemsCollection.ReplaceOne(filter,item);
     }
   }
 }
