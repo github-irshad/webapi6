@@ -1,10 +1,22 @@
+using MongoDB.Driver;
 using webapi6.ItemMember;
+using webapi6.Settings;
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+ 
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+
+//Registering mongoClient
+builder.Services.AddSingleton<IMongoClient>(ServiceProvider => {
+    var settings = builder.Configuration.GetSection(nameof(MongoDbSettings)).Get<MongoDbSettings>();
+    return new MongoClient(settings.ConnectionString);
+});
 
 builder.Services.AddSingleton<IItemRepository,ItemRepository>();
 

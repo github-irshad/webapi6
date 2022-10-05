@@ -6,7 +6,7 @@ using webapi6.ItemMember;
 
 namespace webapi6.Controller{
     [ApiController]
-    [Route("[controller]")]
+    [Route("items")]
     public class ItemController : ControllerBase{
         private readonly IItemRepository repository;
 
