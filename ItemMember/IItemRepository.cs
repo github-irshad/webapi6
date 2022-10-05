@@ -9,5 +9,7 @@ namespace webapi6.ItemMember{
         void CreateItem(record1 item);
 
         void UpdateItem(record1 item);
+
+        void DeleteItem(Guid id);
     }
 } 

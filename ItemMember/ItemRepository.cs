@@ -28,5 +28,10 @@ namespace webapi6.ItemMember{
             var index = items.FindIndex(existingItem=>existingItem.id==item.id);
             items[index]=item;
         }
+
+        public void DeleteItem(Guid id){
+            var index = items.FindIndex(existingItem=>existingItem.id==id);
+            items.RemoveAt(index);
+        }
     }
 }
