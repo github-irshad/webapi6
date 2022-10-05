@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj": {}
+    "C:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj": {}
   },
   "projects": {
-    "c:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj": {
+    "C:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj",
+        "projectUniqueName": "C:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj",
         "projectName": "webapi6",
-        "projectPath": "c:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj",
+        "projectPath": "C:\\Users\\muhammed.irshad\\Desktop\\webapi6\\webapi6.csproj",
         "packagesPath": "C:\\Users\\muhammed.irshad\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\muhammed.irshad\\Desktop\\webapi6\\obj\\",
+        "outputPath": "C:\\Users\\muhammed.irshad\\Desktop\\webapi6\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -41,6 +41,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "MongoDB.driver": {
+              "target": "Package",
+              "version": "[2.17.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
