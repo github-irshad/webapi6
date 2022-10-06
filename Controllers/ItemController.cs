@@ -22,7 +22,7 @@ namespace webapi6.Controller{
 
         [HttpGet("{id}")]
         public ActionResult<ItemDto> GetItem(Guid id){
-            var item = repository.GetItem(id);
+            var item = repository.GetItemAsync(id);
             if(item is null)
                 return NotFound();
             return item.AsDto();
@@ -45,7 +45,7 @@ namespace webapi6.Controller{
 
         [HttpPut]
         public ActionResult UpdateItem(Guid id, UpdateItem ItemDto){
-            var existingItem = repository.GetItem(id);
+            var existingItem = repository.GetItemAsync(id);
             if(existingItem is null){
                 return NotFound();
             }
@@ -62,7 +62,7 @@ namespace webapi6.Controller{
 
         [HttpDelete("{id}")]
         public ActionResult DeleteItem(Guid id){
-            var existingItem = repository.GetItem(id);
+            var existingItem = repository.GetItemAsync(id);
             if(existingItem is null){
                 return NotFound();
             }

@@ -23,10 +23,11 @@ namespace webapi6.ItemMember{
 
     public void DeleteItem(Guid id)
     {
-      throw new NotImplementedException();
+      var filter = filterBuilder.Eq(item => item.id, id);
+      itemsCollection.DeleteOne(filter);
     }
 
-    public Item GetItem(Guid id)
+    public Item GetItemAsync(Guid id)
     {
       var filter = filterBuilder.Eq(item =>item.id,id );
       return itemsCollection.Find(filter).SingleOrDefault();

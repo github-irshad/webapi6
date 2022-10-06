@@ -15,7 +15,7 @@ namespace webapi6.ItemMember{
         {
             return items;
         }
-        public Item GetItem(Guid id)
+        public Item GetItemAsync(Guid id)
         {
             return items.Where(items => items.id == id).SingleOrDefault();
         }
