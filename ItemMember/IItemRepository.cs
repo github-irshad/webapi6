@@ -6,10 +6,14 @@ namespace webapi6.ItemMember{
         Task<Item> GetItemAsync(Guid id);
         Task<IEnumerable<Item>>GetItemsAsync();
 
+        Task<Item>GetItembyNameAsync(decimal price);
+
         Task CreateItemAsync(Item item);
 
         Task UpdateItemAsync(Item item);
 
         Task DeleteItemAsync(Guid id);
+        
+        Task DeleteItembyNameAsync(decimal price);
     }
 } 

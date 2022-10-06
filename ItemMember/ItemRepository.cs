@@ -15,9 +15,14 @@ namespace webapi6.ItemMember{
         {
             return await Task.FromResult(items);
         }
-        public async Task< Item> GetItemAsync(Guid id)
+        public async Task<Item> GetItemAsync(Guid id)
         {
             var item =  items.Where(items => items.id == id).SingleOrDefault();
+            return await Task.FromResult(item);
+        }
+
+        public async Task<Item> GetItembyNameAsync(decimal price){
+            var item =  items.Where(items => items.Price == price).SingleOrDefault();
             return await Task.FromResult(item);
         }
 
@@ -36,6 +41,13 @@ namespace webapi6.ItemMember{
             var index = items.FindIndex(existingItem=>existingItem.id==id);
             items.RemoveAt(index);
             await Task.CompletedTask;
+        }
+
+        public async Task DeleteItembyNameAsync(decimal price){
+            var index = items.FindIndex(existingItem=>existingItem.Price==price);
+            items.RemoveAt(index);
+            await Task.CompletedTask;
+
         }
     }
 }

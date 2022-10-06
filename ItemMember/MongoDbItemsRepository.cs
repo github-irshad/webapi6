@@ -3,13 +3,15 @@ using MongoDB.Driver;
 using webapi6.Entity;
 
 namespace webapi6.ItemMember{
-  public class MongoDbItemsRepository : IItemRepository{
+  public class MongoDbItemsRepository : IItemRepository
+  {
 
     private const string databaseName = "catalog";
     private const string collectionName = "items";
 
     private readonly IMongoCollection<Item>itemsCollection;
-    public MongoDbItemsRepository(IMongoClient mongoClient){
+    public MongoDbItemsRepository(IMongoClient mongoClient)
+    {
       IMongoDatabase database = mongoClient.GetDatabase(databaseName);
       itemsCollection = database.GetCollection<Item>(collectionName);
     }
@@ -43,5 +45,17 @@ namespace webapi6.ItemMember{
       var filter = filterBuilder.Eq(existingItem => existingItem.id , item.id);
       await itemsCollection.ReplaceOneAsync(filter,item);
     }
+    public async Task<Item> GetItembyNameAsync(decimal price)
+    {
+      var filter = filterBuilder.Eq(item =>item.Price,price );
+      return await itemsCollection.Find(filter).SingleOrDefaultAsync();
+    }
+
+    public async Task DeleteItembyNameAsync(decimal price)
+    {
+      var filter = filterBuilder.Eq(item => item.Price, price);
+      await itemsCollection.DeleteOneAsync(filter);
+    }
+    
   }
 }
