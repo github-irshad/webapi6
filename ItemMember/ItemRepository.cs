@@ -11,27 +11,31 @@ namespace webapi6.ItemMember{
             new Item {id=Guid.NewGuid(),Name="Nice",Price=20,CurrentDate=DateTimeOffset.UtcNow}
         };
 
-        public IEnumerable<Item> GetItemsAsync()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            return items;
+            return await Task.FromResult(items);
         }
-        public Item GetItemAsync(Guid id)
+        public async Task< Item> GetItemAsync(Guid id)
         {
-            return items.Where(items => items.id == id).SingleOrDefault();
+            var item =  items.Where(items => items.id == id).SingleOrDefault();
+            return await Task.FromResult(item);
         }
 
-        public void CreateItemAsync(Item item){
+        public async Task CreateItemAsync(Item item){
             items.Add(item);
+            await Task.CompletedTask;
         }
         
-        public void UpdateItemAsync(Item item){
+        public async Task UpdateItemAsync(Item item){
             var index = items.FindIndex(existingItem=>existingItem.id==item.id);
             items[index]=item;
+            await Task.CompletedTask;
         }
 
-        public void DeleteItemAsync(Guid id){
+        public async Task DeleteItemAsync(Guid id){
             var index = items.FindIndex(existingItem=>existingItem.id==id);
             items.RemoveAt(index);
+            await Task.CompletedTask;
         }
     }
 }

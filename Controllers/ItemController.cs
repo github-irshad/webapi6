@@ -6,7 +6,7 @@ using webapi6.ItemMember;
 
 namespace webapi6.Controller{
     [ApiController]
-    [Route("items")]
+    [Route("[controller]")]
     public class ItemController : ControllerBase{
         private readonly IItemRepository repository;
 
@@ -43,7 +43,7 @@ namespace webapi6.Controller{
 
         }
 
-        [HttpPut]
+        [HttpPut("{id}")]
         public async Task<ActionResult> UpdateItemAsync(Guid id, UpdateItem ItemDto){
             var existingItem = await repository.GetItemAsync(id);
             if(existingItem is null){
