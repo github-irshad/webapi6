@@ -16,7 +16,7 @@ namespace webapi6.Controller{
         }
         [HttpGet]
         public IEnumerable<ItemDto>GetRecords(){
-               var item = repository.GetItems().Select(item => item.AsDto());
+               var item = repository.GetItemsAsync().Select(item => item.AsDto());
                return item;
         }
 
@@ -37,7 +37,7 @@ namespace webapi6.Controller{
                 CurrentDate = DateTimeOffset.UtcNow
             };
 
-            repository.CreateItem(item);
+            repository.CreateItemAsync(item);
 
             return CreatedAtAction(nameof(GetItem),new {id = item.id},item.AsDto());
 
@@ -55,7 +55,7 @@ namespace webapi6.Controller{
                 Price=ItemDto.Price
             };
 
-            repository.UpdateItem(UpdatedItem);
+            repository.UpdateItemAsync(UpdatedItem);
             return NoContent();
 
         }
@@ -67,7 +67,7 @@ namespace webapi6.Controller{
                 return NotFound();
             }
 
-            repository.DeleteItem(id);
+            repository.DeleteItemAsync(id);
             return NoContent();
 
         }

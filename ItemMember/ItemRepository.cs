@@ -11,7 +11,7 @@ namespace webapi6.ItemMember{
             new Item {id=Guid.NewGuid(),Name="Nice",Price=20,CurrentDate=DateTimeOffset.UtcNow}
         };
 
-        public IEnumerable<Item> GetItems()
+        public IEnumerable<Item> GetItemsAsync()
         {
             return items;
         }
@@ -20,16 +20,16 @@ namespace webapi6.ItemMember{
             return items.Where(items => items.id == id).SingleOrDefault();
         }
 
-        public void CreateItem(Item item){
+        public void CreateItemAsync(Item item){
             items.Add(item);
         }
         
-        public void UpdateItem(Item item){
+        public void UpdateItemAsync(Item item){
             var index = items.FindIndex(existingItem=>existingItem.id==item.id);
             items[index]=item;
         }
 
-        public void DeleteItem(Guid id){
+        public void DeleteItemAsync(Guid id){
             var index = items.FindIndex(existingItem=>existingItem.id==id);
             items.RemoveAt(index);
         }

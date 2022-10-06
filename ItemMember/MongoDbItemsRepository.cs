@@ -16,12 +16,12 @@ namespace webapi6.ItemMember{
 
     private readonly FilterDefinitionBuilder<Item>filterBuilder = Builders<Item>.Filter;
 
-    public void CreateItem(Item item)
+    public void CreateItemAsync(Item item)
     {
       itemsCollection.InsertOne(item);
     }
 
-    public void DeleteItem(Guid id)
+    public void DeleteItemAsync(Guid id)
     {
       var filter = filterBuilder.Eq(item => item.id, id);
       itemsCollection.DeleteOne(filter);
@@ -33,12 +33,12 @@ namespace webapi6.ItemMember{
       return itemsCollection.Find(filter).SingleOrDefault();
     }
 
-    public IEnumerable<Item> GetItems()
+    public IEnumerable<Item> GetItemsAsync()
     {
       return itemsCollection.Find(new BsonDocument()).ToList();
     }
 
-    public void UpdateItem(Item item)
+    public void UpdateItemAsync(Item item)
     {
       var filter = filterBuilder.Eq(existingItem => existingItem.id , item.id);
       itemsCollection.ReplaceOne(filter,item);

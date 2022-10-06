@@ -4,12 +4,12 @@ namespace webapi6.ItemMember{
     public interface IItemRepository
     {
         Item GetItemAsync(Guid id);
-        IEnumerable<Item>GetItems();
+        IEnumerable<Item>GetItemsAsync();
 
-        void CreateItem(Item item);
+        void CreateItemAsync(Item item);
 
-        void UpdateItem(Item item);
+        void UpdateItemAsync(Item item);
 
-        void DeleteItem(Guid id);
+        void DeleteItemAsync(Guid id);
     }
 } 
