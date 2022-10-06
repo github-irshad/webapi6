@@ -72,16 +72,16 @@ namespace webapi6.Controller{
 
         }
 
-        [HttpDelete("{price}")]
-        public async Task<ActionResult> DeleteItemsbyNameAsync(decimal price){
-            var existingItem = await repository.GetItembyNameAsync(price);
-            if(existingItem is null){
-                return NotFound();
-            }
+        // [HttpDelete("{price}")]
+        // public async Task<ActionResult> DeleteItemsbyNameAsync(decimal price){
+        //     var existingItem = await repository.GetItembyNameAsync(price);
+        //     if(existingItem is null){
+        //         return NotFound();
+        //     }
 
-            await repository.DeleteItembyNameAsync(price);
-            return NoContent();
-        }
+        //     await repository.DeleteItembyNameAsync(price);
+        //     return NoContent();
+        // }
 
     }
 }

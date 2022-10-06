@@ -21,10 +21,6 @@ namespace webapi6.ItemMember{
             return await Task.FromResult(item);
         }
 
-        public async Task<Item> GetItembyNameAsync(decimal price){
-            var item =  items.Where(items => items.Price == price).SingleOrDefault();
-            return await Task.FromResult(item);
-        }
 
         public async Task CreateItemAsync(Item item){
             items.Add(item);
@@ -37,17 +33,22 @@ namespace webapi6.ItemMember{
             await Task.CompletedTask;
         }
 
-        public async Task DeleteItemAsync(Guid id){
+        public async Task DeleteItemAsync(Guid id)
+        {
             var index = items.FindIndex(existingItem=>existingItem.id==id);
             items.RemoveAt(index);
             await Task.CompletedTask;
         }
 
-        public async Task DeleteItembyNameAsync(decimal price){
-            var index = items.FindIndex(existingItem=>existingItem.Price==price);
-            items.RemoveAt(index);
-            await Task.CompletedTask;
+        // public async Task<Item> GetItembyNameAsync(decimal price){
+        //     var item =  items.Where(items => items.Price == price).SingleOrDefault();
+        //     return await Task.FromResult(item);
+        // }
+        // public async Task DeleteItembyNameAsync(decimal price){
+        //     var index = items.FindIndex(existingItem=>existingItem.Price==price);
+        //     items.RemoveAt(index);
+        //     await Task.CompletedTask;
 
-        }
+        // }
     }
 }
