@@ -29,8 +29,10 @@ namespace webapi6.Controller{
         }
 
         [HttpPost]
-        public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto){
-            Item item = new(){
+        public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto)
+        {
+            Item item = new()
+            {
                 id=Guid.NewGuid(),
                 Name = itemDto.Name,
                 Price = itemDto.Price,
@@ -73,9 +75,11 @@ namespace webapi6.Controller{
         }
 
         // [HttpDelete("{price}")]
-        // public async Task<ActionResult> DeleteItemsbyNameAsync(decimal price){
+        // public async Task<ActionResult> DeleteItemsbyNameAsync(decimal price)
+        //{
         //     var existingItem = await repository.GetItembyNameAsync(price);
-        //     if(existingItem is null){
+        //     if(existingItem is null)
+        //{
         //         return NotFound();
         //     }
 
